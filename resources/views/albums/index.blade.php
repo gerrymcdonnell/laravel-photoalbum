@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">
-            Latest listings
 
                 <div class="card-body">
                     @if (session('status'))
@@ -25,11 +24,16 @@
                             @foreach($albums as $album)
                                 <li class="list-group-item">
 
+                                <!-- display image -->
+                                <a href="/albums/{{$album->id}}">
+                                    <img width="80" class="img-thumbnail rounded float-left" src="storage/album_covers/{{$album->cover_image}}">
+                                </a>
                                 <!--will go to show function-->
                                 <a href="/albums/{{$album->id}}">
                                     {{$album->name}}
                                 </a>
 
+                                <p>
                                 <!-- edit -->
                                 <a href="/albums/{{$album->id}}/edit">
                                     Edit
@@ -41,6 +45,7 @@
                                 <a href="/albums/{{$album->id}}/delete">
                                     Delete
                                 </a>
+                                </p>
                                 <!-- end delete -->
 
                                 </li>

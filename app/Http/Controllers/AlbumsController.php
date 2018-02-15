@@ -20,7 +20,8 @@ class AlbumsController extends Controller
 
     public function index()
     {
-        $albums=Album::orderBy('created_at','desc')->get();
+        $albums=Album::with('Photos')->orderBy('created_at','desc')->get();
+
         return view('albums.index')->with('albums',$albums);
     }
     /**
@@ -69,11 +70,10 @@ class AlbumsController extends Controller
         //get the input
         $album->name=$request->input('name');
         $album->description=$request->input('description');
-        $album->cover_image=$path;
+        $album->cover_image=$filenametostore;
 
         //save it
         $album->save();
-
 
         //flash message and redirect
         return redirect('/albums')
