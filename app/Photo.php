@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Album;
 
 class Photo extends Model
 {
@@ -15,4 +16,9 @@ class Photo extends Model
         'size',
         'description'
     ];
+
+    //relationship def: photo belongs to an album
+    public function album(){
+        return $this->belongsTo('App\Album');
+    }
 }
