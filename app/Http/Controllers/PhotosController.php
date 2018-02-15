@@ -32,9 +32,8 @@ class PhotosController extends Controller
     {
         //validation
         $this->validate($request,[
-            'name'=>'required',
-            'email'=>'email',
-            'website'=>'required'
+            'photo'=>'required',
+            'title'=>'required'
         ]);
 
 
@@ -53,6 +52,7 @@ class PhotosController extends Controller
         $photo->save();
          **/
 
+        //mass alignment save all inut fields
         Photo::create($request->all());
 
         //flash message and redirect
@@ -73,7 +73,7 @@ class PhotosController extends Controller
         $photo=Photo::find($id);
         //return the view and pass in the todo variable
         return view('photos.show')
-            ->with('album',$photo);
+            ->with('photo',$photo);
     }
 
     /**
@@ -87,7 +87,7 @@ class PhotosController extends Controller
     {
         $photo=Photo::find($id);
         return view('photos.edit')
-            ->with('album',$photo);
+            ->with('photo',$photo);
     }
     /**
      * Update the specified resource in storage.
@@ -97,30 +97,37 @@ class PhotosController extends Controller
      * @return \Illuminate\Http\Response
      */
     //update the data from the edit form
-    /*
+
     public function update(Request $request, $id)
     {
         //validation
         $this->validate($request,[
-            'name'=>'required',
-            'email'=>'email',
-            'website'=>'required'
+            'photo'=>'required',
+            'title'=>'required'
         ]);
-        $photo=Listing::find($id);
+
+        $photo=Photo::find($id);
+
         //get the input
-        $photo->name=$request->input('name');
+        /**$photo->name=$request->input('name');
         $photo->email=$request->input('email');
         $photo->website=$request->input('website');
         $photo->address=$request->input('address');
         $photo->phone=$request->input('phone');
         $photo->bio=$request->input('bio');
         $photo->user_id=auth()->user()->id;
+
         //save it
-        $photo->save();
+        //$photo->save();
+        **/
+
+        //mass alignment save all inut fields
+        $photo->update($request->all());
+
         //flash message and redirect
-        return redirect('/dashboard')
-            ->with('success','Updated Listing');
-    }*/
+        return redirect('/photos')
+            ->with('success','Updated');
+    }
     /**
      * Remove the specified resource from storage.
      *

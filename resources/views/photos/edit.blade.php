@@ -1,11 +1,14 @@
 @extends('...layouts.app')
 
+<!-- copied from create listing -->
+
 @section('content')
 
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">
-                <div class="card-header">create </div>
+
+                <div class="card-header">Edit </div>
 
                 <div class="card-body">
 
@@ -15,17 +18,15 @@
                     </div>
                     @endif
 
-                    {!! Form::open(['action' => 'PhotosController@store','method'=>'post']) !!}
+                    {!! Form::open(['action' => ['PhotosController@update',$photo->id],'method'=>'post']) !!}
 
-                    {{Form::bsText('photo','',[])}}
-                    {{Form::bsText('title','',[])}}
-                    {{Form::bsText('size','',[])}}
-                    {{Form::bsText('description','',[])}}
+                    {{Form::bsText('photo',$photo->photo,[])}}
+                    {{Form::bsText('title',$photo->title,[])}}
+                    {{Form::bsText('size',$photo->size,[])}}
+                    {{Form::bsText('description',$photo->description,[])}}
+                    {{Form::bsText('album_id',$photo->album_id,[])}}
 
-                    <!-- insert album id -->
-                    {{Form::bsText('album_id',1,[])}}
-                     <!-- insert album id -->
-
+                    {{Form::hidden('_method','PUT')}}
 
                     {{Form::bsSubmit('submit me',['class'=>'btn btn-primary'])}}
 

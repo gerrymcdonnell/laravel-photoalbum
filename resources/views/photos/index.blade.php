@@ -15,7 +15,7 @@
                     @endif
 
                     <h3>
-                        Photos
+                        Photos <a href="/photos/create">New Photo</a>
                         <hr>
                         <br>
 
@@ -29,6 +29,20 @@
                                 <a href="/photos/{{$photo->id}}">
                                     {{$photo->photo}}
                                 </a>
+                                |
+
+                                <!-- edit -->
+                                <a href="/photos/{{$photo->id}}/edit">
+                                    Edit
+                                </a>
+                                <!-- end edit -->
+
+                                |
+                                <!-- delete -->
+                                <a href="/photos/{{$photo->id}}/delete">
+                                    Delete
+                                </a>
+                                <!-- end delete -->
 
                                 </li>
                             @endforeach
