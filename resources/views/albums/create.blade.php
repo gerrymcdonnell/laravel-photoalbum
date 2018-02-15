@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">
-                <div class="card-header">create </div>
+                <div class="card-header">Create New Album</div>
 
                 <div class="card-body">
 
@@ -15,11 +15,16 @@
                     </div>
                     @endif
 
-                    {!! Form::open(['action' => 'AlbumsController@store','method'=>'post']) !!}
+                    {!! Form::open(['action' => 'AlbumsController@store',
+                    'method'=>'post',
+                    'enctype'=>'multipart/form-data'
+                    ]) !!}
 
                     {{Form::bsText('name','',[])}}
-                    {{Form::bsText('cover_image','',[])}}
-                    {{Form::bsText('description','',[])}}
+
+                    {{Form::bsTextArea('description','',[])}}
+
+                    {{Form::file('cover_image')}}
 
                     {{Form::bsSubmit('submit me',['class'=>'btn btn-primary'])}}
 
