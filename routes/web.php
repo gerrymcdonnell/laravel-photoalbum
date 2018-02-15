@@ -26,7 +26,7 @@ Route::resource('todo','TodosController');*/
 Auth::routes();
 
 //Route::resource('albums','AlbumsController@index');
-//Route::resource('photos','PhotosController');
+Route::resource('photos','PhotosController');
 
 Route::get('/', 'AlbumsController@index');
 Route::get('/albums', 'AlbumsController@index');
@@ -36,6 +36,6 @@ Route::post('/albums/store','AlbumsController@store');
 
 Route::get('/photos/create/{id}','PhotosController@create');
 
-Route::post('/photos/store','PhotosController@store');
+//Route::post('/photos/store','PhotosController@store');
 
 

@@ -27,21 +27,22 @@
 
 
                     <hr>
-                    dates:
+                    Album Dates:
                     <div class="well">
-                        {{$album->created_at}}
-
-                        {{$album->updated_at}}
+                        Created: {{$album->created_at}}
+                        Updated:{{$album->updated_at}}
                     </div>
 
-
-                    <ul class="list-group">
-                        @foreach($album->photos as $photo)
-                            <li class="list-group-item">
-                            {{$photo}}
-                            </li>
-                        @endforeach
-                    </ul>
+                    <div class="well">
+                        <ul class="list-group">
+                            @foreach($album->photos as $photo)
+                                <li class="list-group-item">
+                                <img width="80" class="img-thumbnail rounded float-left" src="/storage/photos/{{$photo->album_id}}/{{$photo->photo}}">
+                                {{$photo->title}}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
 
 
 
