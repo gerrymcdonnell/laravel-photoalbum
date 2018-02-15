@@ -17,9 +17,9 @@ class PhotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($album_id)
     {
-        return view('photos.create');
+        return view('photos.create')->with('album_id',$album_id);
     }
     /**
      * Store a newly created resource in storage.

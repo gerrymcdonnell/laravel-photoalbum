@@ -18,6 +18,8 @@
                     </div>
                     @endif
 
+                    <a class="btn btn-default" href="/photos/create/{{$album->id}}" >Upload Photo to album</a>
+
                     <ul class="list-group-item"> Name: {{$album->name}}</ul>
                     <ul class="list-group-item"> Description: {{$album->description}}</ul>
 
@@ -25,12 +27,21 @@
 
 
                     <hr>
-                    Bio:
+                    dates:
                     <div class="well">
                         {{$album->created_at}}
 
                         {{$album->updated_at}}
                     </div>
+
+
+                    <ul class="list-group">
+                        @foreach($album->photos as $photo)
+                            <li class="list-group-item">
+                            {{$photo}}
+                            </li>
+                        @endforeach
+                    </ul>
 
 
 

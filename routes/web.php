@@ -31,4 +31,6 @@ Route::resource('photos','PhotosController');
 
 Route::get('/', 'PhotosController@index');
 
+Route::get('/photos/create/{{id}}','PhotosController@create');
+
 

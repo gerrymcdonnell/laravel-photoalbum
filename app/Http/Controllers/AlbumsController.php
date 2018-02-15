@@ -22,6 +22,10 @@ class AlbumsController extends Controller
     {
         $albums=Album::with('Photos')->orderBy('created_at','desc')->get();
 
+        //foundation version
+        //return view('albums.indexfoundation')->with('albums',$albums);
+
+        //bs version
         return view('albums.index')->with('albums',$albums);
     }
     /**
@@ -90,7 +94,7 @@ class AlbumsController extends Controller
     public function show($id)
     {
         //get the record
-        $album=Album::find($id);
+        $album=Album::with('Photos')->find($id);
 
         //return the view and variable
         return view('albums.show')
