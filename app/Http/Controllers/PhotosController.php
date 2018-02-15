@@ -27,7 +27,8 @@ class PhotosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    /*public function store(Request $request)
+
+    public function store(Request $request)
     {
         //validation
         $this->validate($request,[
@@ -35,6 +36,9 @@ class PhotosController extends Controller
             'email'=>'email',
             'website'=>'required'
         ]);
+
+
+        /**
         //create
         $photo=new Listing;
         //get the input
@@ -47,11 +51,15 @@ class PhotosController extends Controller
         $photo->user_id=auth()->user()->id;
         //save it
         $photo->save();
+         **/
+
+        Photo::create($request->all());
+
         //flash message and redirect
-        return redirect('/dashboard')
-            ->with('success','Saved Listing');
+        return redirect('/photos')
+            ->with('success','Saved ');
     }
-    */
+
     /**
      * Display the specified resource.
      *
