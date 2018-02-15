@@ -28,36 +28,45 @@ class PhotosController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    //problem here
     public function store(Request $request)
     {
         //validation
         $this->validate($request,[
-            'photo'=>'required',
+            'photo'=>'image|max:3999',
             'title'=>'required'
         ]);
 
+        //get file name with ext
+        $filenamewithext=$request->file('photo')->getClientOriginalName();
 
-        /**
-        //create
-        $photo=new Listing;
+        //get just the filename
+        $filename=pathinfo($filenamewithext,PATHINFO_FILENAME);
+
+        //get the ext only
+        $ext=$request->file('photo')->getClientOriginalExtension();
+
+        //create new filename
+        $filenametostore=$filename.'-'.time().'.'.$ext;
+
+        //upload image in storage/public/album_covers
+        $path=$request->file('photo')->storeAs('public/photos/'.$request->input('album_id'),$filenametostore);
+
+        //save record
+        $photo=new Photo;
         //get the input
-        $photo->name=$request->input('name');
-        $photo->email=$request->input('email');
-        $photo->website=$request->input('website');
-        $photo->address=$request->input('address');
-        $photo->phone=$request->input('phone');
-        $photo->bio=$request->input('bio');
-        $photo->user_id=auth()->user()->id;
+        $photo->title=$request->input('title');
+        $photo->description=$request->input('description');
+        $photo->size=$request->file('photo')->getClientSize();
+        $photo->album_id=$request->input('album_id');
+        $photo->photo=$filenametostore;
+
         //save it
         $photo->save();
-         **/
-
-        //mass alignment save all inut fields
-        Photo::create($request->all());
 
         //flash message and redirect
-        return redirect('/photos')
-            ->with('success','Saved ');
+        return redirect('/albums/'.$request->input('album_id'))
+            ->with('success','photo Saved ');
     }
 
     /**

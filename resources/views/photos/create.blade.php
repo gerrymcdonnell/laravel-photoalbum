@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">
-                <div class="card-header">create </div>
+                <div class="card-header">Upload Photo </div>
 
                 <div class="card-body">
 
@@ -15,17 +15,16 @@
                     </div>
                     @endif
 
-                    {!! Form::open(['action' => 'PhotosController@store','method'=>'post']) !!}
+                    {!!
+                    Form::open(['action' => 'PhotosController@store',
+                    'method'=>'post',
+                    'enctype'=>'multipart/form-data'
+                    ])!!}
 
-                    {{Form::bsText('photo','',[])}}
+                    {{Form::file('photo')}}
                     {{Form::bsText('title','',[])}}
-                    {{Form::bsText('size','',[])}}
-                    {{Form::bsText('description','',[])}}
-
-                    <!-- insert album id -->
-                    {{Form::bsText('album_id',1,[])}}
-                     <!-- insert album id -->
-
+                    {{Form::bsTextArea('description','',[])}}
+                    {{Form::hidden('album_id',$album_id)}}
 
                     {{Form::bsSubmit('submit me',['class'=>'btn btn-primary'])}}
 
