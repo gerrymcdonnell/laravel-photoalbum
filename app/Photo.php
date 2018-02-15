@@ -17,8 +17,23 @@ class Photo extends Model
         'description'
     ];
 
+    //upload folder
+    public $dir="/storage/photos/";
+
     //relationship def: photo belongs to an album
     public function album(){
         return $this->belongsTo('App\Album');
     }
+
+
+    //get then columnname
+    public function getPathAttribute($album_id){
+        return $this->dir.$album_id."/{$this->photo}";
+    }
 }
+
+
+
+
+
+

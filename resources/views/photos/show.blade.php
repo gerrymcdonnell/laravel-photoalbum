@@ -25,9 +25,13 @@
 
 
                     <hr>
-                    Bio:
+                    Description:
                     <div class="well">
                         {{$photo->description}}
+                    </div>
+
+                    <div class="well">
+                     <img src="{{$photo->getPathAttribute($photo->album_id)}}">
                     </div>
 
 

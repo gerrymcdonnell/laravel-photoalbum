@@ -41,8 +41,10 @@
                         @if(count($album->photos)>0)
                             @foreach($album->photos as $photo)
                                 <li class="list-group-item">
-                                <img width="80" class="img-thumbnail rounded float-left" src="/storage/photos/{{$photo->album_id}}/{{$photo->photo}}">
-                                {{$photo->title}}
+                                <a href="/photos/{{$photo->id}}">
+                                    <img width="80" class="img-thumbnail rounded float-left" src="/storage/photos/{{$photo->album_id}}/{{$photo->photo}}">
+                                    {{$photo->title}}
+                                </a>
                                 </li>
                             @endforeach
                         @else
