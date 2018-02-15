@@ -8,12 +8,16 @@
         <ul class="navbar-nav mr-auto">
 
 
-          <li class="{{Request::is('/') ? 'nav-item active' : '' }}">
-            <a class="nav-link" href="/">Home</a>
+          <li class="{{Request::is('home') ? 'nav-item active' : '' }}">
+            <a class="nav-link" href="/home">Home</a>
           </li>
 
-            <li class="{{Request::is('todo/create') ? 'nav-item active' : '' }}">
-              <a class="nav-link" href="/todo/create">create</a>
+            <li class="{{Request::is('albums') ? 'nav-item active' : '' }}">
+              <a class="nav-link" href="/albums">Albums</a>
+            </li>
+
+            <li class="{{Request::is('photos') ? 'nav-item active' : '' }}">
+              <a class="nav-link" href="/photos">Photos</a>
             </li>
 
 

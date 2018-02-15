@@ -36,7 +36,7 @@ class CreatePhotosTable extends Migration
         $rows = [
             [
                 'album_id'=>1,
-                'photo'=>'test album dewsc',
+                'photo'=>'test photo',
                 'title'=>'my cover image here',
                 'size'=>'234 kb',
                 'description'=>'my desc image here',
@@ -46,7 +46,7 @@ class CreatePhotosTable extends Migration
             ],
             [
                 'album_id'=>1,
-                'photo'=>'test album dewsc2',
+                'photo'=>'test photo2',
                 'title'=>'my cover image here2',
                 'size'=>'834 kb',
                 'description'=>'my desc image2 here',

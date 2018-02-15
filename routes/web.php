@@ -11,10 +11,11 @@
 |
 */
 
-
+/**
 Route::get('/', function () {
     return view('welcome');
 });
+ **/
 
 //point to index action ofr todos contrller
 /*Route::get('/', 'TodosController@index');
@@ -24,10 +25,10 @@ Route::resource('todo','TodosController');*/
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('albums','AlbumsController');
 
-
-
-Auth::routes();
+Route::resource('photos','PhotosController');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
