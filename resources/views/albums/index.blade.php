@@ -41,12 +41,18 @@
                                 <!-- end edit -->
 
                                 |
-                                <!-- delete -->
-                                <a href="/albums/{{$album->id}}/delete">
-                                    Delete
-                                </a>
-                                </p>
-                                <!-- end delete -->
+
+                                <!--delete has to be a form with a hidden method field saying its a delete -->
+                                {!! Form::open(['action' => ['AlbumsController@destroy',$album->id],
+                                'method'=>'post',
+                                'class'=>'float-xs-right','onsubmit'=>'return confirm("Are you sure")']) !!}
+
+                                <!--hidden field for method=put-->
+                                {{Form::hidden('_method','DELETE')}}
+                                {{Form::bsSubmit('delete me',['class'=>'btn btn-danger'])}}
+
+                                {!! Form::close() !!}
+                                <!-- end delete form -->
 
                                 </li>
                             @endforeach

@@ -162,11 +162,11 @@ class AlbumsController extends Controller
      */
     public function destroy($id)
     {
-       /* $album=Album::find($id);
+        $album=Album::find($id);
         $album->delete();
         //flash message and redirect
-        return redirect('/')
-            ->with('success',' deleted');*/
+        return redirect('/albums')
+            ->with('success',' deleted');
     }
 
 }//end
