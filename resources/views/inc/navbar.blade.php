@@ -7,13 +7,13 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
 
-            <li class="{{Request::is('photos') ? 'nav-item active' : '' }}">
+{{--            <li class="{{Request::is('photos') ? 'nav-item active' : '' }}">
               <a class="nav-link" href="/photos">Photos</a>
             </li>
 
             <li class="{{Request::is('photos/create') ? 'nav-item active' : '' }}">
               <a class="nav-link" href="/photos/create">Add Photo</a>
-            </li>
+            </li>--}}
 
 
             <li class="{{Request::is('albums') ? 'nav-item active' : '' }}">
