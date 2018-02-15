@@ -44,11 +44,36 @@ class AlbumsController extends Controller
         //validation
         $this->validate($request,[
             'name'=>'required',
-            'cover_image'=>'required',
-            'description'=>'required'
+            'cover_image'=>'image|max:1999'
         ]);
 
-        Album::create($request->all());
+        //fix image path
+
+        //get file name with ext
+        $filenamewithext=$request->file('cover_image')->getClientOriginalName();
+
+        //get just the filename
+        $filename=pathinfo($filenamewithext,PATHINFO_FILENAME);
+
+        //get the ext only
+        $ext=$request->file('cover_image')->getClientOriginalExtension();
+
+        //create new filename
+        $filenametostore=$filename.'-'.time().'.'.$ext;
+
+        //upload image in storage/public/album_covers
+        $path=$request->file('cover_image')->storeAs('public/album_covers',$filenametostore);
+
+        //save record
+        $album=new Album;
+        //get the input
+        $album->name=$request->input('name');
+        $album->description=$request->input('description');
+        $album->cover_image=$path;
+
+        //save it
+        $album->save();
+
 
         //flash message and redirect
         return redirect('/albums')
@@ -66,7 +91,8 @@ class AlbumsController extends Controller
     {
         //get the record
         $album=Album::find($id);
-        //return the view and pass in the todo variable
+
+        //return the view and variable
         return view('albums.show')
             ->with('album',$album);
     }
@@ -102,6 +128,7 @@ class AlbumsController extends Controller
             'description'=>'required'
         ]);
 
+        //load thye record from db
         $album=Album::find($id);
 
         //get the input

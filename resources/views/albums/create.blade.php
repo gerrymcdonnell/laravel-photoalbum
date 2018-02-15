@@ -26,6 +26,9 @@
 
                     {{Form::file('cover_image')}}
 
+                    <p>
+                    <hr>
+                    </p>
                     {{Form::bsSubmit('submit me',['class'=>'btn btn-primary'])}}
 
                     {!! Form::close() !!}

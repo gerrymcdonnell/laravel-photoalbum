@@ -13,5 +13,10 @@ class Album extends Model
         'cover_image',
         'description'
     ];
+
+    //relationship album can have many photos
+    public function photos(){
+        return $this->hasMany('App\Photo');
+    }
 }
 
