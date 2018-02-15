@@ -15,11 +15,13 @@
                     </div>
                     @endif
 
-                    {!! Form::open(['action' => 'AlbumsController@store','method'=>'post']) !!}
+                    {!! Form::open(['action' => ['AlbumsController@update',$album->id],'method'=>'post']) !!}
 
-                    {{Form::bsText('name','',[])}}
-                    {{Form::bsText('cover_image','',[])}}
-                    {{Form::bsText('description','',[])}}
+                    {{Form::bsText('name',$album->name,[])}}
+                    {{Form::bsText('cover_image',$album->cover_image,[])}}
+                    {{Form::bsText('description',$album->description,[])}}
+
+                    {{Form::hidden('_method','PUT')}}
 
                     {{Form::bsSubmit('submit me',['class'=>'btn btn-primary'])}}
 

@@ -38,31 +38,23 @@ class AlbumsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    /*public function store(Request $request)
+
+    public function store(Request $request)
     {
         //validation
         $this->validate($request,[
             'name'=>'required',
-            'email'=>'email',
-            'website'=>'required'
+            'cover_image'=>'required',
+            'description'=>'required'
         ]);
-        //create
-        $album=new Listing;
-        //get the input
-        $album->name=$request->input('name');
-        $album->email=$request->input('email');
-        $album->website=$request->input('website');
-        $album->address=$request->input('address');
-        $album->phone=$request->input('phone');
-        $album->bio=$request->input('bio');
-        $album->user_id=auth()->user()->id;
-        //save it
-        $album->save();
+
+        Album::create($request->all());
+
         //flash message and redirect
-        return redirect('/dashboard')
+        return redirect('/albums')
             ->with('success','Saved Listing');
     }
-    */
+
     /**
      * Display the specified resource.
      *
@@ -100,30 +92,39 @@ class AlbumsController extends Controller
      * @return \Illuminate\Http\Response
      */
     //update the data from the edit form
-    /*
+
     public function update(Request $request, $id)
     {
         //validation
         $this->validate($request,[
             'name'=>'required',
-            'email'=>'email',
-            'website'=>'required'
+            'cover_image'=>'required',
+            'description'=>'required'
         ]);
-        $album=Listing::find($id);
+
+        $album=Album::find($id);
+
         //get the input
-        $album->name=$request->input('name');
+        /**$album->name=$request->input('name');
         $album->email=$request->input('email');
         $album->website=$request->input('website');
         $album->address=$request->input('address');
         $album->phone=$request->input('phone');
         $album->bio=$request->input('bio');
         $album->user_id=auth()->user()->id;
+
         //save it
-        $album->save();
+        //$album->save();
+         **/
+
+        //mass alignment save all inut fields
+        $album->update($request->all());
+
+
         //flash message and redirect
-        return redirect('/dashboard')
+        return redirect('/albums')
             ->with('success','Updated Listing');
-    }*/
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -132,11 +133,11 @@ class AlbumsController extends Controller
      */
     public function destroy($id)
     {
-        $album=Album::find($id);
+       /* $album=Album::find($id);
         $album->delete();
         //flash message and redirect
         return redirect('/')
-            ->with('success',' deleted');
+            ->with('success',' deleted');*/
     }
 
 }//end

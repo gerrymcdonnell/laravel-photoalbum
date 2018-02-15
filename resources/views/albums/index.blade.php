@@ -26,9 +26,22 @@
                                 <li class="list-group-item">
 
                                 <!--will go to show function-->
-                                <a href="/listings/{{$album->id}}">
+                                <a href="/albums/{{$album->id}}">
                                     {{$album->name}}
                                 </a>
+
+                                <!-- edit -->
+                                <a href="/albums/{{$album->id}}/edit">
+                                    Edit
+                                </a>
+                                <!-- end edit -->
+
+                                |
+                                <!-- delete -->
+                                <a href="/albums/{{$album->id}}/delete">
+                                    Delete
+                                </a>
+                                <!-- end delete -->
 
                                 </li>
                             @endforeach
