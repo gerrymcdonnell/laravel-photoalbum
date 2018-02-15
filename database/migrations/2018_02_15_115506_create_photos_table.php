@@ -21,7 +21,7 @@ class CreatePhotosTable extends Migration
             $table->string('photo');
             $table->string('title');
             $table->string('size');
-            $table->string('description');
+            $table->string('description')->nullable();
 
             $table->timestamps();
         });
@@ -36,7 +36,7 @@ class CreatePhotosTable extends Migration
         $rows = [
             [
                 'album_id'=>1,
-                'photo'=>'test photo',
+                'photo'=>'grumpyface1.jpg',
                 'title'=>'my cover image here',
                 'size'=>'234 kb',
                 'description'=>'my desc image here',
@@ -46,7 +46,7 @@ class CreatePhotosTable extends Migration
             ],
             [
                 'album_id'=>1,
-                'photo'=>'test photo2',
+                'photo'=>'grumpyface1.jpg',
                 'title'=>'my cover image here2',
                 'size'=>'834 kb',
                 'description'=>'my desc image2 here',

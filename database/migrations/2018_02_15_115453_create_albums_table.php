@@ -31,17 +31,17 @@ class CreateAlbumsTable extends Migration
         //setup default data
         $rows = [
             [
-            'name'=>'test album',
-            'description'=>'test album dewsc',
-            'cover_image'=>'my cover image here',
+            'name'=>'grumpy cat test album',
+            'description'=>'test album1',
+            'cover_image'=>'grumpyface1.jpg',
 
             'created_at'=>date('Y-m-d G:i:s'),
             'updated_at'=>date('Y-m-d G:i:s')
             ],
             [
-            'name'=>'test album2',
-            'description'=>'test album dewsc2',
-            'cover_image'=>'my cover image2 here',
+            'name'=>'grumpy cat test album2',
+            'description'=>'test album2',
+            'cover_image'=>'grumpyface1.jpg',
 
             'created_at'=>date('Y-m-d G:i:s'),
             'updated_at'=>date('Y-m-d G:i:s')
