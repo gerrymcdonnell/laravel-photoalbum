@@ -29,6 +29,6 @@ Route::resource('albums','AlbumsController');
 
 Route::resource('photos','PhotosController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'PhotosController@index');
 
 
